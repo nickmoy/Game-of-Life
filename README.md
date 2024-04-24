@@ -3,4 +3,5 @@ This is an implementation of Conway's Game of Life written in Java with the Java
 
 ## How to run
 `javac GameOfLife.javac`
+
 `java GameOfLife`
