@@ -48,7 +48,7 @@ import java.awt.event.ActionListener;
 //	9)	Add grid using JLayeredPanel
 
 @SuppressWarnings("serial")
-public class GameOfLife extends JFrame implements MouseListener{
+public class Game_of_Life extends JFrame implements MouseListener{
 
 	private JLabel lblNewLabel;
 	private JPanel panel;
@@ -63,7 +63,7 @@ public class GameOfLife extends JFrame implements MouseListener{
 	private static int[][] newGen;
 
 
-	public GameOfLife() {
+	public Game_of_Life() {
 
 		this.setTitle("Conway's Game of Life");
 
@@ -193,14 +193,14 @@ public class GameOfLife extends JFrame implements MouseListener{
 	 */
 	public static void DrawGrid(Graphics g) {
 		for (int r = 0; r < 640; r++) {
-			if (r % GameOfLife.CellHeight == 0) {
+			if (r % Game_of_Life.CellHeight == 0) {
 				g.setColor(Color.WHITE);
 				g.drawLine(0, r, 640, r);
 			}
 		}
 		
 		for (int c = 0; c < 640; c++) {
-			if (c % GameOfLife.CellWidth == 0) {
+			if (c % Game_of_Life.CellWidth == 0) {
 				g.setColor(Color.WHITE);
 				g.drawLine(c, 0, c, 640);
 			}
@@ -233,8 +233,8 @@ public class GameOfLife extends JFrame implements MouseListener{
 	 */
 	public void mouseReleased(MouseEvent e) {
 		if (paused == true) {
-			int x = e.getX() / GameOfLife.CellWidth;
-			int y = e.getY() / GameOfLife.CellHeight - 3;
+			int x = e.getX() / Game_of_Life.CellWidth;
+			int y = e.getY() / Game_of_Life.CellHeight - 3;
 			
 			// Draw over cell
 			Graphics g = this.panel.getGraphics();
@@ -286,10 +286,10 @@ public class GameOfLife extends JFrame implements MouseListener{
 		 * Create the Game Loop
 		 */
 		gameLoop = new Thread(() -> {
-			GameOfLife frame = new GameOfLife();
+			Game_of_Life frame = new Game_of_Life();
 			frame.setVisible(true);
 
-			int[][] arr = new int[frame.getHeight() / GameOfLife.CellHeight][frame.getWidth() / GameOfLife.CellWidth];
+			int[][] arr = new int[frame.getHeight() / Game_of_Life.CellHeight][frame.getWidth() / Game_of_Life.CellWidth];
 			arr[6][2] = 1;
 			arr[6][3] = 1;
 			arr[7][2] = 1;
